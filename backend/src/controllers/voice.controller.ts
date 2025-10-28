@@ -1,0 +1,8 @@
+import { Request, Response } from "express";
+import { parseCommand } from "../utils/parser";
+
+export const parseVoice = async (req: Request, res: Response) => {
+  const { command } = req.body;
+  const parsed = parseCommand(command);
+  res.json(parsed);
+};
