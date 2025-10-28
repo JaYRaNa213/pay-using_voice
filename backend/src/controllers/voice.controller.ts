@@ -3,6 +3,10 @@ import { parseCommand } from "../utils/parser";
 
 export const parseVoice = async (req: Request, res: Response) => {
   const { command } = req.body;
-  const parsed = parseCommand(command);
-  res.json(parsed);
+  try {
+    const parsed = await parseCommand(command);
+    return res.json(parsed);
+  } catch (err) {
+    return res.status(500).json({ error: "Parsing failed" });
+  }
 };

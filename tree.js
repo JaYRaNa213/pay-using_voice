@@ -1,39 +1,56 @@
-const fs = require("fs");
-const path = require("path");
+// tree.js
+import fs from "fs";
+import path from "path";
 
-const IGNORE_DIRS = [
+const IGNORE_FOLDERS = [
   "node_modules",
-  "dist",
-  "build",
-  ".expo",
   ".git",
-  ".next",
-  ".cache",
+  "build",
+  "dist",
+  ".expo",
+  ".gradle",
+  ".idea",
   ".vscode"
 ];
 
-function generateTree(dirPath: string, indent: string = ""): string {
-  let tree = "";
-  const items = fs.readdirSync(dirPath, { withFileTypes: true });
+const OUTPUT_FILE = "tree.txt";
 
-  for (const item of items) {
-    if (IGNORE_DIRS.includes(item.name)) continue;
-    const fullPath = path.join(dirPath, item.name);
-    const isDir = item.isDirectory();
-    tree += `${indent}├── ${item.name}\n`;
-    if (isDir) tree += generateTree(fullPath, indent + "│   ");
-  }
-  return tree;
+/**
+ * Recursively generate a folder structure string.
+ * @param {string} dir - Starting directory
+ * @param {string} prefix - Tree indentation
+ * @returns {string}
+ */
+function generateTree(dir, prefix = "") {
+  let output = "";
+  const items = fs.readdirSync(dir, { withFileTypes: true });
+
+  const visibleItems = items.filter(
+    (item) => !IGNORE_FOLDERS.includes(item.name)
+  );
+
+  visibleItems.forEach((item, index) => {
+    const isLast = index === visibleItems.length - 1;
+    const pointer = isLast ? "└── " : "├── ";
+    const nextPrefix = prefix + (isLast ? "    " : "│   ");
+    const fullPath = path.join(dir, item.name);
+
+    output += `${prefix}${pointer}${item.name}\n`;
+
+    if (item.isDirectory()) {
+      output += generateTree(fullPath, nextPrefix);
+    }
+  });
+
+  return output;
 }
 
-function main() {
-  const startDir = process.argv[2] || ".";
-  const outputFile = "tree.txt";
+// Start from the current working directory
+const startDir = process.argv[2] || ".";
+const fullTree = `${path.basename(path.resolve(startDir))}/\n${generateTree(
+  startDir
+)}`;
 
-  console.log(`🗂️  Generating tree for: ${path.resolve(startDir)} ...`);
-  const tree = `${path.basename(startDir)}/\n${generateTree(startDir)}`;
-  fs.writeFileSync(outputFile, tree);
-  console.log(`✅ Directory tree saved to ${outputFile}`);
-}
+fs.writeFileSync(OUTPUT_FILE, fullTree, "utf8");
 
-main();
+console.log(`✅ Folder tree saved to ${OUTPUT_FILE}`);

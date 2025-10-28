@@ -1,0 +1,137 @@
+PayTalk/
+├── .bundle
+│   └── config
+├── .eslintrc.js
+├── .gitignore
+├── .prettierrc.js
+├── .watchmanconfig
+├── android
+│   ├── app
+│   │   ├── build.gradle
+│   │   ├── debug.keystore
+│   │   ├── proguard-rules.pro
+│   │   └── src
+│   │       └── main
+│   │           ├── AndroidManifest.xml
+│   │           ├── java
+│   │           │   └── com
+│   │           │       └── paytalk
+│   │           │           ├── MainActivity.kt
+│   │           │           └── MainApplication.kt
+│   │           └── res
+│   │               ├── drawable
+│   │               │   └── rn_edit_text_material.xml
+│   │               ├── mipmap-hdpi
+│   │               │   ├── ic_launcher.png
+│   │               │   └── ic_launcher_round.png
+│   │               ├── mipmap-mdpi
+│   │               │   ├── ic_launcher.png
+│   │               │   └── ic_launcher_round.png
+│   │               ├── mipmap-xhdpi
+│   │               │   ├── ic_launcher.png
+│   │               │   └── ic_launcher_round.png
+│   │               ├── mipmap-xxhdpi
+│   │               │   ├── ic_launcher.png
+│   │               │   └── ic_launcher_round.png
+│   │               ├── mipmap-xxxhdpi
+│   │               │   ├── ic_launcher.png
+│   │               │   └── ic_launcher_round.png
+│   │               └── values
+│   │                   ├── strings.xml
+│   │                   └── styles.xml
+│   ├── build.gradle
+│   ├── gradle
+│   │   └── wrapper
+│   │       ├── gradle-wrapper.jar
+│   │       └── gradle-wrapper.properties
+│   ├── gradle.properties
+│   ├── gradlew
+│   ├── gradlew.bat
+│   └── settings.gradle
+├── app.json
+├── App.tsx
+├── babel.config.js
+├── backend
+│   ├── .env
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── config
+│   │   │   └── db.ts
+│   │   ├── controllers
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── payment.controller.ts
+│   │   │   └── voice.controller.ts
+│   │   ├── models
+│   │   │   ├── Transaction.ts
+│   │   │   └── User.ts
+│   │   ├── routes
+│   │   │   ├── auth.route.ts
+│   │   │   ├── payment.route.ts
+│   │   │   └── voice.route.ts
+│   │   ├── server.ts
+│   │   └── utils
+│   │       ├── auth.ts
+│   │       └── parser.ts
+│   ├── tree.ts
+│   ├── tree.txt
+│   └── tsconfig.json
+├── Gemfile
+├── index.js
+├── ios
+│   ├── .xcode.env
+│   ├── PayTalk
+│   │   ├── AppDelegate.swift
+│   │   ├── Images.xcassets
+│   │   │   ├── AppIcon.appiconset
+│   │   │   │   └── Contents.json
+│   │   │   └── Contents.json
+│   │   ├── Info.plist
+│   │   ├── LaunchScreen.storyboard
+│   │   └── PrivacyInfo.xcprivacy
+│   ├── PayTalk.xcodeproj
+│   │   ├── project.pbxproj
+│   │   └── xcshareddata
+│   │       └── xcschemes
+│   │           └── PayTalk.xcscheme
+│   └── Podfile
+├── jest.config.js
+├── metro.config.js
+├── package-lock.json
+├── package.json
+├── README.md
+├── src
+│   ├── assets
+│   ├── components
+│   │   ├── buttons
+│   │   │   └── MicButton.tsx
+│   │   ├── cards
+│   │   │   └── TransactionCard.tsx
+│   │   └── visualizers
+│   │       └── VoiceVisualizer.tsx
+│   ├── context
+│   │   ├── AuthContext.tsx
+│   │   └── TransactionContext.tsx
+│   ├── hooks
+│   │   └── useVoiceCommand.ts
+│   ├── navigation
+│   │   └── AppNavigator.tsx
+│   ├── screens
+│   │   ├── HistoryScreen.tsx
+│   │   ├── InsightsScreen.tsx
+│   │   ├── LoginScreen.tsx
+│   │   └── VoiceCommandScreen.tsx
+│   ├── services
+│   │   ├── api.ts
+│   │   ├── nlp.ts
+│   │   └── voice.ts
+│   ├── styles
+│   │   └── theme.ts
+│   └── types
+│       └── index.ts
+├── tree.js
+├── tree.txt
+├── tsconfig.json
+└── __tests__
+    └── App.test.tsx

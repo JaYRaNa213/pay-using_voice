@@ -1,11 +1,21 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-const transactionSchema = new mongoose.Schema({
-  from: String,
-  to: String,
-  amount: Number,
-  type: { type: String, enum: ["send", "receive"], default: "send" },
-  timestamp: { type: Date, default: Date.now }
+export interface ITransactionDoc extends Document {
+  from: string;
+  to: string;
+  amount: number;
+  type: string;
+  status: string;
+  timestamp: Date;
+}
+
+const TransactionSchema: Schema = new Schema({
+  from: { type: String, required: true },
+  to: { type: String, required: true },
+  amount: { type: Number, required: true },
+  type: { type: String, default: "SEND" },
+  status: { type: String, default: "SUCCESS" },
+  timestamp: { type: Date, default: Date.now },
 });
 
-export const Transaction = mongoose.model("Transaction", transactionSchema);
+export default mongoose.model<ITransactionDoc>("Transaction", TransactionSchema);
